@@ -1,5 +1,11 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const extractSass = new ExtractTextPlugin({
+    filename: "[name].css"
+//    disable: process.env.NODE_ENV === "development"
+});
 
 module.exports = {
     entry: {
@@ -8,20 +14,13 @@ module.exports = {
     module: {
         rules: [{
             test: /\.scss$/,
-            use: [
-            { // creates style nodes from JS strings
-                loader: "style-loader" 
-            }, 
-            { // translates CSS into CommonJS
-                loader: "css-loader", options: {  
-                    sourceMap: true
-                }
-            },
-            { // compiles Sass to CSS
-                loader: "sass-loader", options: {  
-                    sourceMap: true
-                } 
-            }]
+            use: extractSass.extract({
+                fallback: "style-loader",
+                use: [
+                    {loader: "css-loader", options: { minimize: process.env.NODE_ENV === "production" } },
+                    {loader: "sass-loader"} 
+                ]
+            })
         },
         {
             test: /\.js$/,
@@ -37,6 +36,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(['public/dist']),
+        extractSass
     ],
     output: {
         filename: '[name].bundle.js',
