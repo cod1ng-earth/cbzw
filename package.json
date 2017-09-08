@@ -1,0 +1,23 @@
+{
+  "name": "cbzw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elmariachi111/cbzw.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elmariachi111/cbzw/issues"
+  },
+  "homepage": "https://github.com/elmariachi111/cbzw#readme",
+  "dependencies": {
+    "http-server": "^0.10.0"
+  }
+}
