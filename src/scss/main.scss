@@ -1,2 +1,18 @@
 //@import "custom";
-@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap-reboot";
+
+body > .container {
+    position: absolute;    
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+    background-color: #DDD;
+    
+}
+
+#canvas {
+    background-color: #666;
+    width: 100%;
+    height: 100%;
+}
