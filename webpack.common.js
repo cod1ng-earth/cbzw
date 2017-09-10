@@ -1,15 +1,23 @@
 const path = require('path');
+const webpack = require('webpack');
+
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const provide = new webpack.ProvidePlugin({
+    $: 'cash-dom',
+    jQuery: 'cash-dom'
+  })
 
 const extractSass = new ExtractTextPlugin({
-    filename: "[name].css"
+    filename: "[name].[chunkhash].css"
 //    disable: process.env.NODE_ENV === "development"
 });
 
 module.exports = {
     entry: {
-        'app': './src/js/index.js'
+        'app': './src/js/app.js'
     },
     module: {
         rules: [{
@@ -18,6 +26,16 @@ module.exports = {
                 fallback: "style-loader",
                 use: [
                     {loader: "css-loader", options: { minimize: process.env.NODE_ENV === "production" } },
+                    {loader: 'postcss-loader', // Run post css actions
+                        options: {
+                          plugins: function () {
+                            return [
+                              require('precss'),
+                              require('autoprefixer')
+                            ];
+                          }
+                        }
+                    },
                     {loader: "sass-loader"} 
                 ]
             })
@@ -35,11 +53,16 @@ module.exports = {
     ]
     },
     plugins: [
-        new CleanWebpackPlugin(['public/dist']),
-        extractSass
+        new CleanWebpackPlugin(['public']),
+        new HtmlWebpackPlugin({
+            title: 'Caching',
+            template: 'src/index.ejs'
+        }),
+        extractSass,
+        provide
     ],
     output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'public/dist')
+        filename: '[name].[hash].js',
+        path: path.resolve(__dirname, 'public')
     }
 };
