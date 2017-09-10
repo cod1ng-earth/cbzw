@@ -17,10 +17,17 @@ const extractSass = new ExtractTextPlugin({
 
 module.exports = {
     entry: {
-        'app': './src/js/app.js'
+        'app': './src/app.js'
     },
     module: {
         rules: [{
+            test: /\.hbs$/,
+            use: {
+                loader: 'handlebars-template-loader'
+            }
+        },
+            
+        {
             test: /\.scss$/,
             use: extractSass.extract({
                 fallback: "style-loader",
@@ -64,5 +71,8 @@ module.exports = {
     output: {
         filename: '[name].[hash].js',
         path: path.resolve(__dirname, 'public')
+    },
+    node: {
+        fs: "empty" // avoids error messages
     }
 };
