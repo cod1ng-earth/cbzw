@@ -56,6 +56,12 @@ module.exports = {
                     presets: ['env']
                 }
             }
+        },
+        {
+            test: /\.(jpe?g|gif|png)$/,
+            use: [
+                'file-loader'
+            ]
         }
     ]
     },
