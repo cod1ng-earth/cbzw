@@ -1,3 +1,35 @@
 .elmariachi111 {
-    background-color: yellow;
+    left: 10%;
+    top: 15%;
+
+    padding: 2rem;
+    background-color: #FBD549;
+    border-radius: 10px;
+
+    //transform: rotate3d(0,1,1,1deg);
+    box-shadow: 0rem 0rem 5rem;
+
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    transition: background-color .4s, left 1s;
+
+    &.zaxis {
+        animation-name: elmariachi111-zaxis;
+    }
+    &.yaxis {
+        background-color: #079D04;
+        animation-name: elmariachi111-yaxis;
+    }
+}
+
+@keyframes elmariachi111-zaxis {
+    0%   {transform: rotate3d(0,0,-1,3deg);}
+    100% {transform: rotate3d(0,0,1,3deg); }
+}
+
+@keyframes elmariachi111-yaxis {
+    0%   {transform: rotate3d(0,-1,0,30deg); }
+    100% {transform: rotate3d(0,1,0,30deg); }
 }
