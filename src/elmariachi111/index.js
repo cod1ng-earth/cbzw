@@ -3,7 +3,7 @@ const tpl = require('./card.hbs')
 
 export class Card {
     render($el) {
-        const markup = tpl({name: 'your name'});
+        const markup = tpl({name: 'Elmariachi111'});
         
         $el.html(markup);
         $el.addClass('zaxis');

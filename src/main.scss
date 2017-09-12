@@ -8,10 +8,21 @@ body > .container {
     padding: 10px;
 
     background-color: #666;
+    
+    .watermark {
+        position: absolute;
+        width: 480px;
+        height: 75px;
+        right: 10px;
+        bottom: 10px;
+
+        background-image: url('res/coding-berlin.png');
+        background-size: contain;
+    }
 }
 
 #canvas {
-    background-image: url('skulls.png');
+    background-image: url('res/skulls.png');
     
     width: 100%;
     height: 100%;
