@@ -1,18 +1,12 @@
 import './main.scss';
-import _forEach from 'lodash/forEach';
-import * as Elmariachi111 from './elmariachi111';
+import * as modules from './modules';
 
 $(() => {
     let $canvas = $('#canvas');
-
-    let cards = {
-        elmariachi111: new Elmariachi111.Card()
-    }
-
-    _forEach(cards, (card, id) => {
+    for (let id in modules) {
+        const card = new modules[id].default;
         const $el = $(`<div class="card ${id}"></div>`)
         card.render($el);
         $canvas.append($el);
-    })
-    
+    }
 });
