@@ -10,13 +10,7 @@ export default class Card {
             this.$el.toggleClass('zaxis').toggleClass('yaxis');
         });
         this.$el.addClass('zaxis');
-
-        this.fetchBitcoinRate().then(rate => {
-            this.bitcoinRate = rate;
-            this._render();
-        }).catch(() => {
-            console.log('ups');
-        })
+        this.refresh();
     }
 
     _render() {
@@ -29,9 +23,18 @@ export default class Card {
         this.$el.find('a[rel=refresh]').on('click', (evt) => {
             evt.stopPropagation();
             evt.preventDefault();
-            this.render(this.$el);
+            this.refresh(this.$el);
             return false;
         });
+    }
+
+    refresh() {
+        this.fetchBitcoinRate().then(rate => {
+            this.bitcoinRate = rate;
+            this._render();
+        }).catch(() => {
+            console.log('ups');
+        })
     }
 
     fetchBitcoinRate() {
@@ -45,5 +48,4 @@ export default class Card {
             });
         });
     }
-
 }
