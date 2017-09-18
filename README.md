@@ -1,4 +1,4 @@
-# cbzw
+# cbzw (Coding Berlin Zettelwirtschaft)
 
 a collaboratively editable visual cardboard for Coding Berlin. 
 Add your own card now and give us a PR to see it live. 
