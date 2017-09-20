@@ -34,6 +34,31 @@
     }
 }
 
+.bazoo {
+    position: absolute;
+    top: 40px;
+    left: 400px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 75px;
+    border-color: red blue green orange;
+    transition-property: transform;
+    transition-duration: 1s;
+
+    &:hover {
+        animation-name: bazoo-rotate;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+}
+
+@keyframes bazoo-rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
 @keyframes elmariachi111-zaxis {
     0%   {transform: rotate3d(0,0,-1,3deg);}
     100% {transform: rotate3d(0,0,1,3deg); }
