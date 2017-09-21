@@ -1,5 +1,9 @@
 # cbzw (Coding Berlin Zettelwirtschaft)
 
+That's what we're supposing to build here:
+
+![Zettelwirtschaft](http://blogs.plos.org/thestudentblog/files/2015/07/5141328136_16d8f73ee7_b-1024x680.jpg)
+
 a collaboratively editable visual cardboard for Coding Berlin. 
 Add your own card now and give us a PR to see it live. 
 You only need node/npm >= 6 (Use NVM if you're new to node!). 
