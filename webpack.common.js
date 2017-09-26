@@ -68,7 +68,6 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['public']),
         new HtmlWebpackPlugin({
-            title: 'Caching',
             template: 'src/index.ejs'
         }),
         extractSass,
